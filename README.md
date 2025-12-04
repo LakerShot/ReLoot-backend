@@ -1,98 +1,196 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# ReLoot Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Профессиональный REST API сервер для проекта ReLoot, построенный на современном стеке технологий.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Технологический Стек
 
-## Description
+- **Node.js 20+** - Серверное окружение
+- **TypeScript** - Типизированный JavaScript для безопасности кода
+- **NestJS** - Прогрессивный Node.js фреймворк
+- **PostgreSQL** - Надежная реляционная СУБД
+- **Prisma** - Современная ORM с type-safety
+- **JWT** - Безопасная аутентификация
+- **Swagger** - Автоматическая документация API
+- **Docker** - Контейнеризация для удобной разработки
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📋 Требования
 
-## Project setup
+- Node.js >= 20.0.0
+- npm >= 10.0.0
+- Docker и Docker Compose (для локальной разработки)
+- PostgreSQL 16+ (если не используете Docker)
+
+## 🛠️ Быстрый Старт
+
+### 1. Установка зависимостей
 
 ```bash
-$ npm install
+npm install
 ```
 
-## Compile and run the project
+### 2. Настройка переменных окружения
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+cp .env.example .env
+# Отредактируйте .env файл под ваши нужды
 ```
 
-## Run tests
+### 3. Запуск PostgreSQL через Docker
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+docker-compose -f docker-compose.dev.yml up -d
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### 4. Настройка базы данных
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Генерация Prisma Client
+npx prisma generate
+
+# Применение миграций
+npx prisma migrate deploy
+
+# Или для разработки (создает миграцию автоматически)
+npx prisma migrate dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### 5. Запуск приложения
 
-## Resources
+```bash
+# Режим разработки с hot-reload
+npm run start:dev
 
-Check out a few resources that may come in handy when working with NestJS:
+# Обычный режим
+npm run start
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+# Production режим
+npm run start:prod
+```
 
-## Support
+## 📚 API Документация
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+После запуска приложения, Swagger UI доступен по адресу:
+```
+http://localhost:3000/api/docs
+```
 
-## Stay in touch
+## 🏗️ Архитектура Проекта
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```
+src/
+├── auth/           # Модуль аутентификации (JWT, Passport)
+├── users/          # Модуль управления пользователями
+├── prisma/         # Prisma сервис и модуль
+├── app.module.ts   # Корневой модуль приложения
+└── main.ts         # Точка входа
 
-## License
+prisma/
+└── schema.prisma   # Схема базы данных
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+## 🔐 Основные Эндпоинты
+
+### Аутентификация
+- `POST /auth/register` - Регистрация нового пользователя
+- `POST /auth/login` - Авторизация пользователя
+- `GET /auth/profile` - Получение профиля (требует JWT)
+
+### Пользователи
+- `GET /users` - Список пользователей
+- `GET /users/:id` - Получить пользователя по ID
+- `POST /users` - Создать пользователя
+- `PATCH /users/:id` - Обновить пользователя
+- `DELETE /users/:id` - Удалить пользователя
+
+## 🧪 Тестирование
+
+```bash
+# Unit тесты
+npm run test
+
+# E2E тесты
+npm run test:e2e
+
+# Покрытие тестами
+npm run test:cov
+```
+
+## 🐳 Docker
+
+### Запуск полного стека
+
+```bash
+docker-compose up -d
+```
+
+### Только PostgreSQL (для локальной разработки)
+
+```bash
+docker-compose -f docker-compose.dev.yml up -d
+```
+
+## 📝 Команды Prisma
+
+```bash
+# Генерация Prisma Client
+npx prisma generate
+
+# Создание миграции
+npx prisma migrate dev --name <имя_миграции>
+
+# Применение миграций
+npx prisma migrate deploy
+
+# Prisma Studio (GUI для БД)
+npx prisma studio
+
+# Синхронизация схемы с БД
+npx prisma db push
+```
+
+## 🔧 Разработка
+
+### Добавление нового модуля
+
+```bash
+nest g module feature-name
+nest g service feature-name
+nest g controller feature-name
+```
+
+### Стиль кода
+
+```bash
+# Линтинг
+npm run lint
+
+# Форматирование
+npm run format
+```
+
+## 📦 Сборка
+
+```bash
+npm run build
+```
+
+Собранное приложение будет в папке `dist/`
+
+## 🌍 Переменные Окружения
+
+| Переменная | Описание | Пример |
+|------------|----------|--------|
+| DATABASE_URL | PostgreSQL connection string | postgresql://user:pass@localhost:5432/db |
+| PORT | Порт приложения | 3000 |
+| NODE_ENV | Окружение | development |
+| JWT_SECRET | Секретный ключ JWT | your-secret-key |
+| JWT_EXPIRES_IN | Время жизни токена | 7d |
+| BCRYPT_ROUNDS | Раунды bcrypt | 10 |
+
+## 📄 Лицензия
+
+MIT
+
+## 👨‍💻 Автор
+
+Egor Morozov
