@@ -1,10 +1,23 @@
 {
-  "name": "ReLoot-backend",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "name": "reloot-backend",
+  "version": "1.0.0",
+  "description": "Professional REST API server for ReLoot project built with NestJS, TypeScript, PostgreSQL, and Prisma",
+  "author": "Egor Morozov",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "keywords": [
+    "nestjs",
+    "typescript",
+    "postgresql",
+    "prisma",
+    "rest-api",
+    "jwt",
+    "swagger"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/egormorozov/ReLoot-backend"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -27,11 +40,13 @@
     "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.2.3",
+    "@prisma/client": "^5.22.0",
     "bcrypt": "^6.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.3",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
+    "prisma": "^5.22.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "swagger-ui-express": "^5.0.1"

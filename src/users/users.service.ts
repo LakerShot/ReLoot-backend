@@ -37,7 +37,7 @@ export class UsersService {
     take?: number;
     where?: Prisma.UserWhereInput;
     orderBy?: Prisma.UserOrderByWithRelationInput;
-  }): Promise<User[]> {
+  }): Promise<any[]> {
     const { skip, take, where, orderBy } = params || {};
 
     return this.prisma.user.findMany({
@@ -54,8 +54,7 @@ export class UsersService {
         isActive: true,
         createdAt: true,
         updatedAt: true,
-        password: false,
-      } as any,
+      },
     });
   }
 
